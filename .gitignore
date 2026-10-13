@@ -1,0 +1,9 @@
+[Bb]in/
+[Oo]bj/
+[Tt]est[Rr]esults/
+.idea/
+.vs/
+.vscode/
+*.user
+*.suo
+*.DotSettings.user

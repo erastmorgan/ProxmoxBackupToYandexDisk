@@ -1,0 +1,28 @@
+[Unit]
+Description=Proxmox Backup to Yandex Disk Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/proxmox-backup
+ExecStart=/opt/proxmox-backup/ProxmoxBackupToYandexDisk.Console --daemon
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=proxmox-backup
+
+# Environment
+Environment=DOTNET_ROOT=/usr/share/dotnet
+Environment=HOME=/root
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/root/.proxmox-backup /tmp
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

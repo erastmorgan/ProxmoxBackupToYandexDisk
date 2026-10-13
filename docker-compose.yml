@@ -1,0 +1,26 @@
+services:
+  proxmox-backup-to-yandex-disk:
+    build:
+      context: .
+      dockerfile: ProxmoxBackupToYandexDisk.Console/Dockerfile
+    container_name: proxmox-backup-to-yandex-disk
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    volumes:
+      - proxmox-backup-to-yandex-disk-config:/root/.proxmox-backup
+      - proxmox-backup-to-yandex-disk-tokens:/root/.yandex-disk-tokens
+    environment:
+      - TZ=Europe/Moscow
+
+  tests:
+    build:
+      context: .
+      dockerfile: ProxmoxBackupToYandexDisk.Tests/Dockerfile
+    container_name: proxmox-backup-to-yandex-disk-tests
+    profiles:
+      - test
+
+volumes:
+  proxmox-backup-to-yandex-disk-config:
+  proxmox-backup-to-yandex-disk-tokens:

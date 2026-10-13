@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ProxmoxBackupToYandexDisk.Console": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
